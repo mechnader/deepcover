@@ -8,7 +8,7 @@ import sys, os
 import cv2
 import matplotlib
 import matplotlib.pyplot as plt
-from keras.preprocessing.image import save_img
+from keras.utils import save_img
 from keras.applications import vgg16
 from keras.applications import inception_v3, mobilenet, xception
 

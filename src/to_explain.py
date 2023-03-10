@@ -14,7 +14,7 @@ def to_explain(eobj):
   #print ('\n[Create output folder: {0}]'.format(eobj.outputs))
   di=eobj.outputs
   try:
-    os.system('mkdir -p {0}'.format(di))
+    os.mkdir(i)
   except: pass
 
   if not eobj.boxes is None:
@@ -72,14 +72,14 @@ def to_explain(eobj):
     selement=sbfl_elementt(x, 0, adv_xs, adv_ys, model, eobj.fnames[i])
     dii=di+'/{0}'.format(str(datetime.now()).replace(' ', '-'))
     dii=dii.replace(':', '-')
-    os.system('mkdir -p {0}'.format(dii))
+    os.mkdir(dii)
     for measure in eobj.measures:
       print ('  #### [Measuring: {0} is used]'.format(measure))
       ranking_i, spectrum=to_rank(selement, measure)
       selement.y = y
       diii=dii+'/{0}'.format(measure)
       print ('  #### [Saving: {0}]'.format(diii))
-      os.system('mkdir -p {0}'.format(diii))
+      os.mkdir(diii)
       np.savetxt(diii+'/ranking.txt', ranking_i, fmt='%s')
 
       # to plot the heatmap

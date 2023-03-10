@@ -1,0 +1,8 @@
+ffmpeg
+matplotlib
+seaborn
+tensorflow
+keras
+numpy
+scipy
+opencv-python

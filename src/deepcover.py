@@ -1,5 +1,5 @@
 
-from keras.preprocessing import image
+from keras.utils import load_img
 from keras.applications import vgg16
 from keras.applications.vgg16 import VGG16
 from keras.applications import inception_v3, mobilenet, xception
@@ -100,10 +100,10 @@ def main():
         fname=(os.path.join(path, name))
         if fname.endswith('.jpg') or fname.endswith('.png') or fname.endswith('.JPEG'):
             if args.grayscale is True or args.mnist:
-              x=image.load_img(fname, target_size=(img_rows, img_cols), color_mode = "grayscale")
+              x=load_img(fname, target_size=(img_rows, img_cols), color_mode = "grayscale")
               x=np.expand_dims(x,axis=2)
             else: 
-              x=image.load_img(fname, target_size=(img_rows, img_cols))
+              x=load_img(fname, target_size=(img_rows, img_cols))
             x=np.expand_dims(x,axis=0)
             xs.append(x)
             fnames.append(fname)
