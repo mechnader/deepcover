@@ -14,7 +14,7 @@ def to_explain(eobj):
   #print ('\n[Create output folder: {0}]'.format(eobj.outputs))
   di=eobj.outputs
   try:
-    os.mkdir(i)
+    os.mkdir(di)
   except: pass
 
   if not eobj.boxes is None:
