@@ -8,13 +8,13 @@ DeepCover explains image classifiers using [statistical fault localization](http
 Videos: [ECCV2020](https://www.youtube.com/watch?v=vTyfOBAGm_o), [ICCV2021](https://www.cprover.org/deepcover/iccv2021/iccv2021-talk-compatible.mp4) 
 
 # Install and Setup
-#### Create a clean Docker container with Ubuntu 20.04
+### Create conda envirronement
 ```
-docker run -v ${PWD}:/home -it ubuntu:20.04
+conda create -n deepcover python
 ```
-#### Commands
+#### Install requirements
 ```
-apt-get update && apt-get install pip git ffmpeg libsm6 libxext6 && pip install matplotlib seaborn tensorflow==2.3.0 keras==2.4.3 numpy==1.18.0 scipy==1.4.1 opencv-python && cd home && git clone https://github.com/theyoucheng/deepcover
+pip install -r requirement.txt
 ```
 
 # Hello DeepCover
@@ -37,7 +37,7 @@ usage: deepcover.py [-h] [--model MODEL] [--inputs DIR] [--outputs DIR]
 
 ## To start running the Statistical Fault Localization (SFL) based explaining:
 ```
-python ./src/sfl.py --mobilenet-model --inputs data/panda --outputs outs --testgen-size 200
+python ./src/deepcover.py --mobilenet-model --inputs data/panda --outputs outs --testgen-size 200
 ```
 `--mobilenet-model`   pre-trained keras model 
 
@@ -58,14 +58,6 @@ python src/deepcover.py --mobilenet-model --inputs data/panda/ --outputs outs --
 
 `--masking-value` to control the masking color for mutating the input image
 
-
-## To start running the causal theory based explaining:
-```
-python ./sfl-src/sfl.py --mobilenet-model --inputs data/panda --outputs outs --causal --testgen-iterations 50
-```
-`--causal`              to trigger the causal explanation
-
-`--testgen-iterations`  number of individual causal refinement calls; by default, it’s 1  
 
 ## To load your own model
 ```
